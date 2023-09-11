@@ -48,16 +48,12 @@ def main():
 
     subjects = []
 
-    # Create columns for entering subject details
-    left_column, right_column = st.columns(2)
-
     for i in range(num_subjects):
-        with left_column:
-            subject_name = st.text_input(f"Subject {i + 1} Name:")
-        with right_column:
-            marks = st.number_input(f"Enter the marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
-            credits = st.number_input(f"Enter the credit hours for {subject_name}:", min_value=1, value=1, step=1)
-            subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
+        st.subheader(f"Subject {i + 1}")
+        subject_name = st.text_input(f"Subject {i + 1} Name:")
+        marks = st.number_input(f"Enter the marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
+        credits = st.number_input(f"Enter the credit hours for {subject_name}:", min_value=1, value=1, step=1)
+        subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
 
     if st.button("Calculate GPA"):
         gpa = calculate_gpa(subjects)
