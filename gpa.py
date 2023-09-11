@@ -57,7 +57,7 @@ def main():
 
     if st.button("Calculate GPA"):
         gpa = calculate_gpa(subjects)
-        st.write(f"Your GPA for the current semester is: {gpa}")
+        st.markdown(f"<h2>Your GPA for the current semester is: {gpa}</h2>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
