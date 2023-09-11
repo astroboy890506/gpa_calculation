@@ -42,14 +42,22 @@ def calculate_gpa(subjects):
 
 def main():
     st.title("GPA Calculator")
-    num_subjects = st.number_input("Enter the number of subjects for the current semester:", min_value=1, value=1, step=1)
+
+    # Create a sidebar for the number of subjects
+    num_subjects = st.sidebar.number_input("Enter the number of subjects for the current semester:", min_value=1, value=1, step=1)
+
     subjects = []
 
+    # Create columns for entering subject details
+    left_column, right_column = st.columns(2)
+
     for i in range(num_subjects):
-        subject_name = st.text_input(f"Enter the name of subject {i + 1}:")
-        marks = st.slider(f"Enter the marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
-        credits = st.number_input(f"Enter the credit hours for {subject_name}:", min_value=1, value=1, step=1)
-        subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
+        with left_column:
+            subject_name = st.text_input(f"Subject {i + 1} Name:")
+        with right_column:
+            marks = st.number_input(f"Enter the marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
+            credits = st.number_input(f"Enter the credit hours for {subject_name}:", min_value=1, value=1, step=1)
+            subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
 
     if st.button("Calculate GPA"):
         gpa = calculate_gpa(subjects)
