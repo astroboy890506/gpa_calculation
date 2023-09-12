@@ -52,8 +52,11 @@ def main():
         st.subheader(f"Subject {i + 1}")
         subject_name = st.text_input(f"Name:")
         marks = st.slider(f"Slide to select marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
-        credits = st.slider(f"Slide to select credit hours for {subject_name}:", min_value=1, max_value=5,value=1, step=1)
+        credits = st.slider(f"Slide to select credit hours for {subject_name}:", min_value=1, max_value=5, value=1, step=1)
         subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
+
+        if i < num_subjects - 1:
+            st.button("Next Subject")
 
     if st.button("Calculate GPA"):
         gpa = calculate_gpa(subjects)
