@@ -46,14 +46,14 @@ def main():
     # Create a sidebar for the number of subjects
     num_subjects = st.sidebar.number_input("Enter the number of subjects for the current semester:", min_value=1, value=1, step=1)
 
-        subjects = []
-        for i in range(num_subjects):
-            st.subheader(f"Subject {i + 1}")
-            subject_name = st.text_input(f"Name:")
-            marks = st.slider(f"Slide to select marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
-            credits = st.slider(f"Slide to select credit hours for {subject_name}:", min_value=1, max_value=5, value=1, step=1)
-            subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
+    subjects = []
 
+    for i in range(num_subjects):
+        st.subheader(f"Subject {i + 1}")
+        subject_name = st.text_input(f"Name:")
+        marks = st.slider(f"Slide to select marks for {subject_name}:", min_value=0, max_value=100, value=50, step=1)
+        credits = st.slider(f"Slide to select credit hours for {subject_name}:", min_value=1, max_value=5,value=1, step=1)
+        subjects.append({'name': subject_name, 'marks': marks, 'credits': credits})
 
     if st.button("Calculate GPA"):
         gpa = calculate_gpa(subjects)
