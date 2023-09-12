@@ -46,7 +46,7 @@ def main():
     # Create a sidebar for the number of subjects
     num_subjects = st.sidebar.number_input("Enter the number of subjects for the current semester:", min_value=1, value=1, step=1)
 
-   subjects = []
+        subjects = []
         for i in range(num_subjects):
             st.subheader(f"Subject {i + 1}")
             subject_name = st.text_input(f"Name:")
